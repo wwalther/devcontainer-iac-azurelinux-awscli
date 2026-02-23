@@ -1,4 +1,3 @@
-ARG AZURE_LINUX_BASE_VERSION
 ARG AZURECLI_VERSION
 ARG AWSCLI_VERSION
 ##############################################################################
@@ -19,6 +18,5 @@ RUN tdnf install -y \
   && make \
   && make install
 ##############################################################################
-FROM mcr.microsoft.com/azurelinux/distroless/minimal:${AZURE_LINUX_BASE_VERSION}
-
+FROM scratch
 COPY --from=awscli-builder /opt/aws-cli/ /opt/aws-cli/
